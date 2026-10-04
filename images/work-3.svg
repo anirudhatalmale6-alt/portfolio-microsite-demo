@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Atlas Review editorial layout">
+  <rect width="800" height="600" fill="#f4f1ea"/>
+  <rect x="0" y="0" width="800" height="70" fill="#2a2a28"/>
+  <text x="40" y="46" font-family="Georgia, serif" font-size="27" fill="#f4f1ea" letter-spacing="1">ATLAS REVIEW</text>
+  <text x="640" y="44" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#f4f1ea" opacity=".7" letter-spacing="2">ISSUE 14</text>
+  <text x="40" y="150" font-family="Georgia, serif" font-size="54" fill="#2a2a28">The long way</text>
+  <text x="40" y="208" font-family="Georgia, serif" font-size="54" fill="#2a2a28">round</text>
+  <rect x="40" y="236" width="720" height="2" fill="#2a2a28" opacity=".25"/>
+  <text x="40" y="272" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#9a4b2f" letter-spacing="3">ESSAY · 18 MIN READ</text>
+  <!-- lead image -->
+  <rect x="40" y="300" width="232" height="246" rx="4" fill="#d9d2c4"/>
+  <path d="M40 470 L112 400 L168 452 L214 410 L272 466 L272 546 L40 546 Z" fill="#9a4b2f" opacity=".55"/>
+  <circle cx="226" cy="346" r="20" fill="#f4f1ea" opacity=".8"/>
+  <rect x="300" y="300" width="196" height="8" rx="4" fill="#2a2a28" opacity=".30"/><rect x="300" y="322" width="196" height="8" rx="4" fill="#2a2a28" opacity=".30"/><rect x="300" y="344" width="170" height="8" rx="4" fill="#2a2a28" opacity=".30"/><rect x="300" y="366" width="188" height="8" rx="4" fill="#2a2a28" opacity=".30"/><rect x="300" y="388" width="196" height="8" rx="4" fill="#2a2a28" opacity=".30"/><rect x="300" y="410" width="152" height="8" rx="4" fill="#2a2a28" opacity=".30"/><rect x="300" y="432" width="196" height="8" rx="4" fill="#2a2a28" opacity=".30"/><rect x="300" y="454" width="180" height="8" rx="4" fill="#2a2a28" opacity=".30"/><rect x="300" y="476" width="120" height="8" rx="4" fill="#2a2a28" opacity=".30"/><rect x="524" y="300" width="196" height="8" rx="4" fill="#2a2a28" opacity=".30"/><rect x="524" y="322" width="196" height="8" rx="4" fill="#2a2a28" opacity=".30"/><rect x="524" y="344" width="170" height="8" rx="4" fill="#2a2a28" opacity=".30"/><rect x="524" y="366" width="188" height="8" rx="4" fill="#2a2a28" opacity=".30"/><rect x="524" y="388" width="196" height="8" rx="4" fill="#2a2a28" opacity=".30"/><rect x="524" y="410" width="152" height="8" rx="4" fill="#2a2a28" opacity=".30"/><rect x="524" y="432" width="196" height="8" rx="4" fill="#2a2a28" opacity=".30"/><rect x="524" y="454" width="180" height="8" rx="4" fill="#2a2a28" opacity=".30"/><rect x="524" y="476" width="120" height="8" rx="4" fill="#2a2a28" opacity=".30"/>
+  <rect x="300" y="548" width="100" height="8" rx="4" fill="#9a4b2f" opacity=".8"/>
+</svg>

@@ -1,0 +1,701 @@
+/* ==========================================================================
+   Jordan Avery — portfolio microsite
+   Single stylesheet, no frameworks, no @import, no web-font requests.
+
+   CONTENTS
+   01  Design tokens (colours, type, spacing)  <- change the brand here
+   02  Reset & base
+   03  Helpers (wrap, visually-hidden, skip link)
+   04  Buttons
+   05  Header & navigation
+   06  Hero & page heads
+   07  Sections, cards, about, CTA
+   08  Gallery & lightbox
+   09  Contact form
+   10  Footer
+   11  Motion (fade-in reveals) + reduced-motion opt-out
+   12  Print
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01  DESIGN TOKENS
+   Change these seven colours and the whole site re-skins itself.
+   Every pairing was measured against WCAG AA (needs 4.5:1 for body text):
+     ink on paper     17.1:1      muted on paper     5.7:1
+     white on accent   6.0:1      accent on paper    5.8:1
+     muted on surface  6.0:1      error on surface   6.5:1
+   The dark-mode block below scores 7.5:1 or better on every pairing.
+   If you re-colour the site, re-check these before you publish.
+   ========================================================================== */
+:root {
+  --paper:      #fbfaf7;   /* page background            */
+  --surface:    #ffffff;   /* cards, form fields         */
+  --ink:        #15181c;   /* body text                  */
+  --muted:      #5c6470;   /* secondary text             */
+  --accent:     #1f6f5c;   /* links, buttons, highlights */
+  --accent-dk:  #164f42;   /* accent, hover state        */
+  --line:       #e4e0d8;   /* hairline borders           */
+
+  /* Type: system stack = zero font downloads = fast first paint */
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+  --font-head: Georgia, "Times New Roman", "Iowan Old Style", serif;
+
+  /* Fluid type: scales between phone and desktop without media queries */
+  --step--1: clamp(0.84rem, 0.81rem + 0.15vw, 0.92rem);
+  --step-0:  clamp(1rem,    0.96rem + 0.2vw,  1.08rem);
+  --step-1:  clamp(1.2rem,  1.1rem  + 0.5vw,  1.45rem);
+  --step-2:  clamp(1.5rem,  1.3rem  + 1vw,    2rem);
+  --step-3:  clamp(2rem,    1.6rem  + 2.2vw,  3.2rem);
+
+  --space:   1rem;
+  --gutter:  clamp(1.1rem, 0.6rem + 2.4vw, 2.5rem);
+  --radius:  10px;
+  --shadow:  0 1px 2px rgba(21, 24, 28, .05), 0 8px 24px rgba(21, 24, 28, .07);
+  --max:     1140px;
+}
+
+/* Respect a visitor's OS dark-mode preference. Delete this whole block if
+   you only ever want the light theme. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:     #14171a;
+    --surface:   #1c2024;
+    --ink:       #eceae5;
+    --muted:     #a7b0b9;
+    --accent:    #6fd3b4;
+    --accent-dk: #9ae4cb;
+    --line:      #2d3338;
+    --shadow:    0 1px 2px rgba(0, 0, 0, .35), 0 8px 24px rgba(0, 0, 0, .35);
+  }
+}
+
+
+/* ==========================================================================
+   02  RESET & BASE
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;      /* stops Safari inflating text on rotate */
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 var(--step-0)/1.65 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;           /* long URLs can't widen the layout */
+}
+
+h1, h2, h3 {
+  margin: 0 0 .6em;
+  font-family: var(--font-head);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0 0 1.1em; }
+p:last-child { margin-bottom: 0; }
+
+img, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:hover { color: var(--accent-dk); }
+
+/* One consistent, always-visible focus ring. Never remove this. */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+ul { margin: 0; padding: 0; }
+li { list-style: none; }
+
+button { font: inherit; color: inherit; }
+
+
+/* ==========================================================================
+   03  HELPERS
+   ========================================================================== */
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Visible to screen readers, invisible on screen */
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--gutter);
+  top: -4rem;
+  z-index: 100;
+  padding: .7rem 1.1rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 0 0 var(--radius) var(--radius);
+  text-decoration: none;
+  transition: top .15s ease-out;
+}
+.skip-link:focus { top: 0; color: #fff; }
+
+.eyebrow {
+  margin-bottom: .8rem;
+  color: var(--accent);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+
+/* ==========================================================================
+   04  BUTTONS
+   ========================================================================== */
+.btn {
+  display: inline-block;
+  padding: .85em 1.6em;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: .02em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .18s ease, background-color .18s ease,
+              color .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+
+.btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.btn--primary:hover {
+  background: var(--accent-dk);
+  border-color: var(--accent-dk);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.btn--ghost {
+  border-color: var(--line);
+  color: var(--ink);
+}
+.btn--ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .btn--primary, .btn--primary:hover { color: #0f1316; }
+}
+
+
+/* ==========================================================================
+   05  HEADER & NAVIGATION
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  border-bottom: 1px solid var(--line);
+}
+/* Fallback for browsers without color-mix(): plain solid background. */
+@supports not (background: color-mix(in srgb, red 50%, blue)) {
+  .site-header { background: var(--paper); }
+}
+@supports (backdrop-filter: blur(8px)) {
+  .site-header { backdrop-filter: blur(8px); }
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space);
+  min-height: 68px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--font-head);
+  font-size: var(--step-1);
+  font-weight: 600;
+}
+.logo__mark {
+  display: grid;
+  place-items: center;
+  width: 2.1rem; height: 2.1rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: .78rem;
+  letter-spacing: .04em;
+}
+@media (prefers-color-scheme: dark) { .logo__mark { color: #0f1316; } }
+
+/* -- The toggle button only exists for small screens, and only when JS runs.
+      Hidden by default so a no-JS visitor never sees a dead button. -- */
+.nav-toggle { display: none; }
+
+.nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(.9rem, 2vw, 1.8rem);
+}
+.nav__link {
+  position: relative;
+  padding: .3rem 0;
+  color: var(--ink);
+  font-size: var(--step--1);
+  font-weight: 600;
+  text-decoration: none;
+}
+/* Underline that grows out from the left on hover */
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .22s ease;
+}
+.nav__link:hover::after,
+.nav__link:focus-visible::after,
+.nav__link.is-current::after { transform: scaleX(1); }
+.nav__link.is-current { color: var(--accent); }
+
+/* ---- Mobile nav: collapses ONLY when JS is available (html.js) ---- */
+@media (max-width: 680px) {
+  .js .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    padding: .5rem .85rem;
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: var(--step--1);
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .nav-toggle__bars,
+  .nav-toggle__bars::before,
+  .nav-toggle__bars::after {
+    display: block;
+    width: 16px; height: 2px;
+    background: currentColor;
+    transition: transform .2s ease, opacity .2s ease;
+  }
+  .nav-toggle__bars { position: relative; }
+  .nav-toggle__bars::before,
+  .nav-toggle__bars::after { content: ""; position: absolute; left: 0; }
+  .nav-toggle__bars::before { top: -5px; }
+  .nav-toggle__bars::after  { top:  5px; }
+
+  /* Bars morph into an X while the menu is open */
+  .nav-toggle[aria-expanded="true"] .nav-toggle__bars { background: transparent; }
+  .nav-toggle[aria-expanded="true"] .nav-toggle__bars::before { transform: translateY(5px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .nav-toggle__bars::after  { transform: translateY(-5px) rotate(-45deg); }
+
+  .js .nav {
+    position: absolute;
+    left: 0; right: 0; top: 100%;
+    display: none;
+    padding: var(--space) var(--gutter) 1.4rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+  .js .nav.is-open { display: block; }
+
+  .js .nav__list { flex-direction: column; gap: .2rem; }
+  .js .nav__link { display: block; padding: .7rem 0; font-size: var(--step-0); }
+  .js .nav__link::after { display: none; }
+
+  /* No JavaScript: there is no button to press, so the links simply drop
+     onto their own row underneath the logo and stay horizontal. */
+  .site-header__inner { flex-wrap: wrap; }
+  html:not(.js) .nav { width: 100%; padding-bottom: .9rem; }
+}
+
+
+/* ==========================================================================
+   06  HERO & PAGE HEADS
+   ========================================================================== */
+.hero { padding: clamp(3rem, 8vw, 7rem) 0 clamp(2rem, 5vw, 4rem); }
+.hero__inner { max-width: 62ch; }
+.hero__title { font-size: var(--step-3); }
+.hero__lead {
+  max-width: 54ch;
+  color: var(--muted);
+  font-size: var(--step-1);
+  line-height: 1.55;
+}
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+  margin-top: 2rem;
+}
+
+.page-head { padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(1rem, 3vw, 2rem); }
+.page-head__title { font-size: var(--step-3); max-width: 24ch; }
+.page-head__lead  { max-width: 56ch; color: var(--muted); font-size: var(--step-1); }
+
+
+/* ==========================================================================
+   07  SECTIONS, CARDS, ABOUT, CTA
+   ========================================================================== */
+.section { padding: clamp(2.5rem, 6vw, 5rem) 0; }
+.section--alt { background: var(--surface); border-block: 1px solid var(--line); }
+.section__title { font-size: var(--step-2); }
+
+.section__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .5rem 1.5rem;
+  margin-bottom: 2rem;
+}
+.section__head .section__title { margin-bottom: 0; }
+.section__more { font-size: var(--step--1); font-weight: 600; text-decoration: none; }
+.section__more:hover { text-decoration: underline; }
+
+/* -- Cards: auto-fit grid, so it is 1 / 2 / 3 columns with no breakpoints -- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+  gap: clamp(1rem, 2.5vw, 1.8rem);
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+  box-shadow: var(--shadow);
+}
+.card__link { display: block; color: inherit; text-decoration: none; }
+.card__img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--line); }
+.card__body { padding: 1.1rem 1.2rem 1.3rem; }
+.card__title { margin-bottom: .3rem; font-size: var(--step-1); }
+.card__meta  { margin: 0; color: var(--muted); font-size: var(--step--1); }
+
+/* -- About -- */
+.about {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+}
+@media (min-width: 860px) {
+  .about { grid-template-columns: 1.2fr .8fr; }
+  .about__figure { order: 2; }
+}
+.about__figure { margin: 0; }
+.about__figure img {
+  width: 100%;
+  border-radius: var(--radius);
+  background: var(--line);
+}
+.about__figure figcaption {
+  margin-top: .6rem;
+  color: var(--muted);
+  font-size: var(--step--1);
+  text-align: center;
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.8rem;
+  margin-top: 2rem;
+}
+.facts__item { display: flex; flex-direction: column; }
+.facts__item strong {
+  font-family: var(--font-head);
+  font-size: var(--step-2);
+  color: var(--accent);
+  line-height: 1;
+}
+.facts__item span { color: var(--muted); font-size: var(--step--1); }
+
+/* -- Call to action -- */
+.cta { padding: clamp(2.5rem, 6vw, 5rem) 0; }
+.cta__inner {
+  max-width: 48ch;
+  margin-inline: auto;
+  padding: clamp(1.8rem, 4vw, 3rem);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.cta__title { font-size: var(--step-2); }
+.cta__text { color: var(--muted); margin-bottom: 1.6rem; }
+
+
+/* ==========================================================================
+   08  GALLERY & LIGHTBOX
+   ========================================================================== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: clamp(1.2rem, 3vw, 2.2rem);
+}
+.gallery__link {
+  position: relative;
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--line);
+}
+.gallery__img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform .4s ease, opacity .3s ease;
+}
+.gallery__link:hover .gallery__img,
+.gallery__link:focus-visible .gallery__img { transform: scale(1.04); opacity: .9; }
+
+/* The little "+" badge that appears on hover */
+.gallery__zoom {
+  position: absolute;
+  right: .8rem; bottom: .8rem;
+  display: grid;
+  place-items: center;
+  width: 2.4rem; height: 2.4rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  line-height: 1;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .22s ease, transform .22s ease;
+}
+.gallery__link:hover .gallery__zoom,
+.gallery__link:focus-visible .gallery__zoom { opacity: 1; transform: translateY(0); }
+
+.gallery__caption { padding-top: .9rem; }
+.gallery__title { margin-bottom: .25rem; font-size: var(--step-1); }
+.gallery__meta  { margin: 0; color: var(--muted); font-size: var(--step--1); }
+
+/* -- Lightbox overlay -- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: rgba(8, 10, 12, .97);
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+.lightbox[hidden] { display: none; }
+.lightbox.is-visible { opacity: 1; }
+
+.lightbox__figure { margin: 0; max-width: min(100%, 980px); text-align: center; }
+.lightbox__img {
+  max-width: 100%;
+  max-height: 76vh;
+  margin-inline: auto;
+  border-radius: var(--radius);
+  background: #222;
+}
+.lightbox__caption { margin-top: .9rem; color: #e9e6e0; font-size: var(--step--1); }
+
+.lightbox__close,
+.lightbox__nav {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 2.9rem; height: 2.9rem;
+  background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color .18s ease, transform .18s ease;
+}
+.lightbox__close:hover,
+.lightbox__nav:hover { background: rgba(255, 255, 255, .22); transform: scale(1.06); }
+.lightbox__close { position: absolute; top: 1rem; right: 1rem; font-size: 1.9rem; }
+
+@media (max-width: 560px) {
+  .lightbox { flex-wrap: wrap; }
+  .lightbox__figure { order: -1; flex: 1 0 100%; }
+}
+
+
+/* ==========================================================================
+   09  CONTACT FORM
+   ========================================================================== */
+.contact {
+  display: grid;
+  gap: clamp(1.8rem, 4vw, 3.5rem);
+  align-items: start;
+}
+@media (min-width: 860px) { .contact { grid-template-columns: 1.3fr .7fr; } }
+
+.form {
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.form__row { margin-bottom: 1.3rem; }
+.form__label { display: block; margin-bottom: .4rem; font-size: var(--step--1); font-weight: 600; }
+.form__req { color: var(--accent); }
+
+.form__input {
+  width: 100%;
+  padding: .75rem .9rem;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font: inherit;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+.form__input:hover { border-color: var(--muted); }
+.form__input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+.form__input--area { resize: vertical; min-height: 8rem; }
+
+/* Error text: red that still passes AA on both themes */
+.form__error {
+  min-height: 1.2em;
+  margin: .35rem 0 0;
+  color: #b3261e;
+  font-size: var(--step--1);
+}
+@media (prefers-color-scheme: dark) { .form__error { color: #ff9e95; } }
+.form__input[aria-invalid="true"] { border-color: #b3261e; }
+
+.form__status { margin: 1rem 0 0; font-size: var(--step--1); font-weight: 600; color: var(--accent); }
+
+.contact__aside {
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.details { margin: 0; }
+.details dt {
+  margin-top: 1.1rem;
+  color: var(--muted);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.details dt:first-child { margin-top: 0; }
+.details dd { margin: .3rem 0 0; }
+.details__social { display: flex; flex-wrap: wrap; gap: .9rem; }
+.details__note { margin-top: 1.6rem; color: var(--muted); font-size: var(--step--1); }
+
+
+/* ==========================================================================
+   10  FOOTER
+   ========================================================================== */
+.site-footer {
+  padding: 2rem 0;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+}
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .8rem 1.5rem;
+}
+.site-footer__copy { margin: 0; color: var(--muted); font-size: var(--step--1); }
+.site-footer__links { display: flex; flex-wrap: wrap; gap: 1.2rem; font-size: var(--step--1); }
+.site-footer__links a { color: var(--muted); text-decoration: none; }
+.site-footer__links a:hover { color: var(--accent); text-decoration: underline; }
+
+
+/* ==========================================================================
+   11  MOTION — fade-in on scroll
+   The .reveal class starts hidden ONLY if JavaScript is running (html.js).
+   JS then adds .is-in as each element scrolls into view. No JS, no CSS
+   support, or reduced-motion preference => content is simply visible.
+   ========================================================================== */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .55s ease-out, transform .55s ease-out;
+}
+.js .reveal.is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+
+/* ==========================================================================
+   12  PRINT
+   ========================================================================== */
+@media print {
+  .site-header, .nav-toggle, .cta, .lightbox, .skip-link { display: none !important; }
+  body { background: #fff; color: #000; font-size: 11pt; }
+  .js .reveal { opacity: 1; transform: none; }
+  a { color: #000; text-decoration: underline; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; }
+}

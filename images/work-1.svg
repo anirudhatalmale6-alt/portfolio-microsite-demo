@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Northline banking app on a phone screen">
+  <defs><linearGradient id="n1" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#17352e"/><stop offset="1" stop-color="#0d1f1b"/></linearGradient></defs>
+  <rect width="800" height="600" fill="url(#n1)"/>
+  <circle cx="660" cy="120" r="150" fill="#1f6f5c" opacity=".35"/>
+  <circle cx="120" cy="520" r="110" fill="#6fd3b4" opacity=".14"/>
+  <!-- phone -->
+  <rect x="290" y="70" width="220" height="460" rx="34" fill="#0b1513" stroke="#6fd3b4" stroke-opacity=".3" stroke-width="2"/>
+  <rect x="360" y="86" width="80" height="9" rx="4.5" fill="#ffffff" opacity=".16"/>
+  <!-- balance card -->
+  <rect x="312" y="118" width="176" height="120" rx="14" fill="#1f6f5c"/>
+  <rect x="330" y="142" width="54" height="8" rx="4" fill="#ffffff" opacity=".6"/>
+  <text x="330" y="190" font-family="Georgia, serif" font-size="30" fill="#ffffff">€4,218</text>
+  <rect x="330" y="206" width="90" height="7" rx="3.5" fill="#ffffff" opacity=".4"/>
+  <rect x="452" y="140" width="22" height="16" rx="3" fill="#ffffff" opacity=".5"/>
+  <!-- section label -->
+  <rect x="316" y="262" width="74" height="9" rx="4.5" fill="#ffffff" opacity=".4"/>
+  
+    <rect x="316" y="318" width="168" height="40" rx="8" fill="#ffffff" opacity=".07"/>
+    <circle cx="336" cy="338" r="10" fill="#6fd3b4" opacity=".55"/>
+    <rect x="354" y="329" width="62" height="7" rx="3.5" fill="#ffffff" opacity=".55"/>
+    <rect x="354" y="341" width="38" height="6" rx="3" fill="#ffffff" opacity=".28"/>
+    <rect x="432" y="333" width="42" height="8" rx="4" fill="#6fd3b4" opacity=".75"/>
+    <rect x="316" y="372" width="168" height="40" rx="8" fill="#ffffff" opacity=".07"/>
+    <circle cx="336" cy="392" r="10" fill="#6fd3b4" opacity=".55"/>
+    <rect x="354" y="383" width="62" height="7" rx="3.5" fill="#ffffff" opacity=".55"/>
+    <rect x="354" y="395" width="38" height="6" rx="3" fill="#ffffff" opacity=".28"/>
+    <rect x="432" y="387" width="42" height="8" rx="4" fill="#6fd3b4" opacity=".75"/>
+    <rect x="316" y="426" width="168" height="40" rx="8" fill="#ffffff" opacity=".07"/>
+    <circle cx="336" cy="446" r="10" fill="#6fd3b4" opacity=".55"/>
+    <rect x="354" y="437" width="62" height="7" rx="3.5" fill="#ffffff" opacity=".55"/>
+    <rect x="354" y="449" width="38" height="6" rx="3" fill="#ffffff" opacity=".28"/>
+    <rect x="432" y="441" width="42" height="8" rx="4" fill="#6fd3b4" opacity=".75"/>
+    <rect x="316" y="480" width="168" height="40" rx="8" fill="#ffffff" opacity=".07"/>
+    <circle cx="336" cy="500" r="10" fill="#6fd3b4" opacity=".55"/>
+    <rect x="354" y="491" width="62" height="7" rx="3.5" fill="#ffffff" opacity=".55"/>
+    <rect x="354" y="503" width="38" height="6" rx="3" fill="#ffffff" opacity=".28"/>
+    <rect x="432" y="495" width="42" height="8" rx="4" fill="#6fd3b4" opacity=".75"/>
+  <!-- tab bar -->
+  <rect x="300" y="492" width="200" height="30" rx="15" fill="#ffffff" opacity=".07"/>
+  <circle cx="344" cy="507" r="6" fill="#6fd3b4"/><circle cx="400" cy="507" r="6" fill="#ffffff" opacity=".3"/>
+  <circle cx="456" cy="507" r="6" fill="#ffffff" opacity=".3"/>
+  <text x="56" y="86" font-family="Georgia, serif" font-size="34" fill="#ffffff" opacity=".9">Northline</text>
+  <text x="56" y="116" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#6fd3b4" letter-spacing="3">MOBILE BANKING</text>
+</svg>

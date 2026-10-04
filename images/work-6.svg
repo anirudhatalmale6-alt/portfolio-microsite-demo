@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Illustrated hiking map with contour lines and a dotted trail">
+  <rect width="800" height="600" fill="#f3efdf"/>
+  <ellipse cx="300" cy="300" rx="70" ry="44" fill="none" stroke="#4a7a4e" stroke-opacity="0.50" stroke-width="2" transform="rotate(-18 300 300)"/><ellipse cx="300" cy="300" rx="116" ry="74" fill="none" stroke="#4a7a4e" stroke-opacity="0.45" stroke-width="2" transform="rotate(-16 300 300)"/><ellipse cx="300" cy="300" rx="162" ry="104" fill="none" stroke="#4a7a4e" stroke-opacity="0.40" stroke-width="2" transform="rotate(-14 300 300)"/><ellipse cx="300" cy="300" rx="208" ry="134" fill="none" stroke="#4a7a4e" stroke-opacity="0.35" stroke-width="2" transform="rotate(-12 300 300)"/><ellipse cx="300" cy="300" rx="254" ry="164" fill="none" stroke="#4a7a4e" stroke-opacity="0.30" stroke-width="2" transform="rotate(-10 300 300)"/><ellipse cx="300" cy="300" rx="300" ry="194" fill="none" stroke="#4a7a4e" stroke-opacity="0.25" stroke-width="2" transform="rotate(-8 300 300)"/><ellipse cx="300" cy="300" rx="346" ry="224" fill="none" stroke="#4a7a4e" stroke-opacity="0.20" stroke-width="2" transform="rotate(-6 300 300)"/>
+  <path d="M60 530 C 180 470, 190 360, 290 330 S 470 300, 520 200 S 640 120, 740 96"
+        fill="none" stroke="#9a4b2f" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 16"/>
+  <path d="M660 430 q 60 -20 110 10" fill="none" stroke="#3f7f8f" stroke-width="7" stroke-linecap="round" opacity=".55"/>
+  <path d="M620 470 q 70 -24 150 14" fill="none" stroke="#3f7f8f" stroke-width="7" stroke-linecap="round" opacity=".35"/>
+  <circle cx="290" cy="330" r="9" fill="#9a4b2f"/><circle cx="290" cy="330" r="17" fill="none" stroke="#9a4b2f" stroke-width="2"/>
+  <circle cx="740" cy="96" r="9" fill="#9a4b2f"/>
+  <path d="M120 180 l26 -46 l26 46 z" fill="#4a7a4e" opacity=".8"/>
+  <path d="M164 180 l20 -34 l20 34 z" fill="#4a7a4e" opacity=".55"/>
+  <text x="112" y="214" font-family="Georgia, serif" font-size="17" fill="#3c5a3e">Pico Alto</text>
+  <text x="300" y="368" font-family="Georgia, serif" font-size="17" fill="#9a4b2f">Refuge</text>
+  <rect x="56" y="520" width="190" height="4" fill="#3c5a3e"/>
+  <rect x="56" y="512" width="4" height="20" fill="#3c5a3e"/><rect x="242" y="512" width="4" height="20" fill="#3c5a3e"/>
+  <text x="56" y="556" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#3c5a3e" letter-spacing="2">2 KM</text>
+  <g transform="translate(728,528)"><circle r="26" fill="none" stroke="#3c5a3e" stroke-width="2"/>
+    <path d="M0 -20 l7 20 l-7 -6 l-7 6 z" fill="#9a4b2f"/>
+    <text x="-5" y="-26" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#3c5a3e">N</text></g>
+</svg>

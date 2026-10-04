@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 720" width="640" height="720" role="img" aria-label="Illustrated portrait">
+  <rect width="640" height="720" fill="#efe9dd"/>
+  <circle cx="320" cy="300" r="210" fill="#e2d8c6"/>
+  <!-- shoulders / green jumper -->
+  <path d="M120 720 q 0 -190 200 -210 q 200 20 200 210 z" fill="#1f6f5c"/>
+  <path d="M276 500 h88 v44 q -44 26 -88 0 z" fill="#d8a98c"/>
+  <!-- head -->
+  <ellipse cx="320" cy="372" rx="118" ry="140" fill="#e8bb9b"/>
+  <!-- hair -->
+  <path d="M202 362 q 6 -150 118 -150 t 118 150 q -20 -72 -118 -72 t -118 72 z" fill="#3a2b22"/>
+  <path d="M198 356 q -16 70 12 116 q -28 -70 -12 -116 z" fill="#3a2b22"/>
+  <path d="M442 356 q 16 70 -12 116 q 28 -70 12 -116 z" fill="#3a2b22"/>
+  <!-- round glasses -->
+  <circle cx="276" cy="378" r="38" fill="#ffffff" fill-opacity=".35" stroke="#2f2a26" stroke-width="7"/>
+  <circle cx="366" cy="378" r="38" fill="#ffffff" fill-opacity=".35" stroke="#2f2a26" stroke-width="7"/>
+  <path d="M314 378 h14" stroke="#2f2a26" stroke-width="7"/>
+  <path d="M238 372 l-32 -8" stroke="#2f2a26" stroke-width="7" stroke-linecap="round"/>
+  <path d="M404 372 l32 -8" stroke="#2f2a26" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="276" cy="378" r="7" fill="#2f2a26"/><circle cx="366" cy="378" r="7" fill="#2f2a26"/>
+  <path d="M318 400 q 8 26 -8 32" fill="none" stroke="#c98f68" stroke-width="5" stroke-linecap="round" opacity=".5"/>
+  <path d="M292 452 q 30 20 60 0" fill="none" stroke="#9c5f49" stroke-width="7" stroke-linecap="round"/>
+  <!-- collar -->
+  <path d="M276 532 l44 42 l44 -42 l26 14 l-70 62 l-70 -62 z" fill="#175647" opacity=".5"/>
+</svg>

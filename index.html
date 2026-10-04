@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ====== SEO: edit these three lines on every page ====== -->
+<title>Jordan Avery — Product Designer &amp; Illustrator | Portfolio</title>
+<meta name="description" content="Portfolio of Jordan Avery, a product designer and illustrator based in Lisbon. Selected branding, interface and editorial work.">
+<meta name="keywords" content="product designer, illustrator, portfolio, branding, UI design, Lisbon">
+<meta name="author" content="Jordan Avery">
+<link rel="canonical" href="https://example.com/index.html">
+
+<!-- Social preview (optional, safe to delete) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jordan Avery — Product Designer &amp; Illustrator">
+<meta property="og:description" content="Selected branding, interface and editorial work.">
+<meta property="og:image" content="images/og-card.svg">
+
+<!-- Favicon -->
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+<!-- Stylesheet -->
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Tells the CSS that JS is available. If JS is off, nothing below runs and
+     the page simply shows all content straight away (graceful degradation). -->
+<script>document.documentElement.className += " js";</script>
+</head>
+
+<body>
+<!-- Keyboard users can jump straight to the content -->
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header" role="banner">
+  <div class="wrap site-header__inner">
+    <a class="logo" href="index.html" aria-label="Jordan Avery — home">
+      <span class="logo__mark" aria-hidden="true">JA</span>
+      <span class="logo__text">Jordan Avery</span>
+    </a>
+
+    <!-- The hamburger lives in the HTML; JS only toggles it. With JS off it
+         stays hidden and the nav below is permanently visible (style.css). -->
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+      <span class="nav-toggle__bars" aria-hidden="true"></span>
+      <span class="nav-toggle__label">Menu</span>
+    </button>
+
+    <nav id="primary-nav" class="nav" aria-label="Primary">
+      <ul class="nav__list">
+        <li><a class="nav__link is-current" href="index.html" aria-current="page">Home</a></li>
+        <li><a class="nav__link" href="work.html">Work</a></li>
+        <li><a class="nav__link" href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ====== HERO ====== -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero__inner">
+        <p class="eyebrow reveal">Product design &amp; illustration</p>
+        <h1 class="hero__title reveal">I design calm, useful interfaces for people in a hurry.</h1>
+        <p class="hero__lead reveal">
+          Ten years shaping products for fintech, health and small independent studios.
+          I work end-to-end: research, interface, design system, and the hand-off your
+          engineers actually enjoy receiving.
+        </p>
+        <p class="hero__actions reveal">
+          <a class="btn btn--primary" href="work.html">See selected work</a>
+          <a class="btn btn--ghost" href="contact.html">Start a project</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SELECTED WORK ====== -->
+  <section class="section" aria-labelledby="work-heading">
+    <div class="wrap">
+      <header class="section__head reveal">
+        <h2 id="work-heading" class="section__title">Selected work</h2>
+        <a class="section__more" href="work.html">All projects <span aria-hidden="true">&rarr;</span></a>
+      </header>
+
+      <ul class="cards">
+        <li class="card reveal">
+          <a class="card__link" href="work.html#northline">
+            <img class="card__img" src="images/work-1.svg" width="800" height="600" loading="lazy" decoding="async"
+                 alt="Northline banking app shown on a phone screen, with a balance card and a list of transactions.">
+            <div class="card__body">
+              <h3 class="card__title">Northline — mobile banking</h3>
+              <p class="card__meta">Interface design · Design system · 2025</p>
+            </div>
+          </a>
+        </li>
+
+        <li class="card reveal">
+          <a class="card__link" href="work.html#petalbox">
+            <img class="card__img" src="images/work-2.svg" width="800" height="600" loading="lazy" decoding="async"
+                 alt="Petalbox brand identity: a pink flower mark beside packaging mock-ups.">
+            <div class="card__body">
+              <h3 class="card__title">Petalbox — brand identity</h3>
+              <p class="card__meta">Branding · Packaging · 2024</p>
+            </div>
+          </a>
+        </li>
+
+        <li class="card reveal">
+          <a class="card__link" href="work.html#atlas">
+            <img class="card__img" src="images/work-3.svg" width="800" height="600" loading="lazy" decoding="async"
+                 alt="Atlas Review editorial layout with a large headline and a two-column article grid.">
+            <div class="card__body">
+              <h3 class="card__title">Atlas Review — editorial site</h3>
+              <p class="card__meta">Art direction · Front-end · 2024</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ====== ABOUT ====== -->
+  <section class="section section--alt" aria-labelledby="about-heading">
+    <div class="wrap about">
+      <div class="about__text reveal">
+        <h2 id="about-heading" class="section__title">A little about me</h2>
+        <p>
+          I started out drawing maps for a hiking magazine and never quite lost the habit of
+          making complicated things legible. Today I help teams turn a messy idea into something
+          a person can use on a bus, one-handed, in bad light.
+        </p>
+        <p>
+          I like small teams, honest deadlines and design that survives contact with real data.
+        </p>
+        <ul class="facts">
+          <li class="facts__item"><strong>10+</strong><span>years designing</span></li>
+          <li class="facts__item"><strong>40</strong><span>shipped projects</span></li>
+          <li class="facts__item"><strong>6</strong><span>design systems</span></li>
+        </ul>
+      </div>
+
+      <figure class="about__figure reveal">
+        <img src="images/portrait.svg" width="640" height="720" loading="lazy" decoding="async"
+             alt="Illustrated portrait of Jordan Avery wearing round glasses and a green jumper.">
+        <figcaption>Lisbon, 2026</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ====== CALL TO ACTION ====== -->
+  <section class="cta" aria-labelledby="cta-heading">
+    <div class="wrap">
+      <div class="cta__inner reveal">
+        <h2 id="cta-heading" class="cta__title">Got something you want built properly?</h2>
+        <p class="cta__text">I take on two projects a quarter. Tell me what you have in mind.</p>
+        <a class="btn btn--primary" href="contact.html">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="wrap site-footer__inner">
+    <p class="site-footer__copy">&copy; <span id="year">2026</span> Jordan Avery. All rights reserved.</p>
+    <ul class="site-footer__links">
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="#main">Back to top</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
